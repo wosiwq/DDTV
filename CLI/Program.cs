@@ -70,8 +70,14 @@ namespace CLI
             string rurl = $"http://0.0.0.0:11419";
             app.Urls.Add(rurl);
             Log.Info(nameof(Main), $"WebApplication开始运行，开始监听[{rurl}]");
+            CreateWebHostBuilder(args).Build().Run();
             app.Run();
         }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .UseStartup<Startup>()
+            .UseWebRoot("static");
 
         public class Service
         {
