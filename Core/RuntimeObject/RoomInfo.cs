@@ -80,7 +80,7 @@ namespace Core.RuntimeObject
                 if (roomInfos.TryGetValue(item, out RoomCardClass roomCard))
                 {
                     _count.Add(item);
-                    roomCard.IsRecDanmu = State;
+                    roomCard.IsAutoRec = State;
                 }
             }
             return _count;
