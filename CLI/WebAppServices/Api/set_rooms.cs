@@ -31,7 +31,7 @@ namespace CLI.WebAppServices.Api
         /// <param name="commonParameters"></param>
         /// <returns></returns>
         [HttpPost(Name = "modify_recording_settings")]
-        public ActionResult Post([FromForm] List<long> uid, [FromForm] bool state, PostCommonParameters commonParameters)
+        public ActionResult Post(List<long> uid, bool state, PostCommonParameters commonParameters)
         {
             List<long> count = Core.RuntimeObject._Room.ModifyRecordingSettings(uid, state);
             return Content(MessageBase.Success(nameof(modify_recording_settings),count,$"返回列表中的房间的自动录制修改为{state}"), "application/json");
