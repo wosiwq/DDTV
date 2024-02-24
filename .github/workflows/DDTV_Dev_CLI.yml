@@ -138,8 +138,7 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: |       
-            New-Item -ItemType Directory -Force -Path "CLI/build_output/bin"
-            Get-ChildItem -Path "CLI/build_output" -Recurse | Where-Object {!$_.PSIsContainer -and $_.Name -ne "bin"} | Move-Item -Destination "CLI/build_output/bin"
+            Get-ChildItem -Path "CLI/build_output" | Move-Item -Destination "CLI/build_output/bin"
             echo "Creating shortcut for CLI.exe"
             $WshShell = New-Object -comObject WScript.Shell
             $Shortcut = $WshShell.CreateShortcut("CLI\build_output\DDTV_CLI.lnk")
